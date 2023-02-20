@@ -68,3 +68,5 @@ jobs:
         working-directory: ./terraform
         id: apply
         run: terraform apply -auto-approve -input=false
+
+        #test
