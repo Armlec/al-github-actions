@@ -5,11 +5,11 @@ variable "TOTESYS_DB_USER" {}
 variable "TOTESYS_DB_PASSWORD" {}
 
 
-resource "aws_secretsmanager_secret" "totesys-db-credentials-2" {
-    name        = "totesys-db-credentials-2"
+resource "aws_secretsmanager_secret" "totesys-db-credentials-3" {
+    name        = "totesys-db-credentials-3"
 }
 
 resource "aws_secretsmanager_secret_version" "example" {
-    secret_id     = aws_secretsmanager_secret.totesys-db-credentials-2.id
-    secret_string = "jsonencode({ host: ${var.TOTESYS_DB_HOST}, port: ${var.TOTESYS_DB_PORT}, database: ${var.TOTESYS_DB_DATABASE}, user: ${var.TOTESYS_DB_USER}, password: ${var.TOTESYS_DB_PASSWORD} })"
+    secret_id     = aws_secretsmanager_secret.totesys-db-credentials-3.id
+    secret_string = jsonencode("{ host: ${var.TOTESYS_DB_HOST}, port: ${var.TOTESYS_DB_PORT}, database: ${var.TOTESYS_DB_DATABASE}, user: ${var.TOTESYS_DB_USER}, password: ${var.TOTESYS_DB_PASSWORD} }")
 }
