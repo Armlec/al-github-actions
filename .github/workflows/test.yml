@@ -1,4 +1,7 @@
 name: test-deploy
+env:
+  NAME: 'name-demo'
+
 on:
   push:
     branches:
@@ -11,9 +14,11 @@ on:
         default: dev
         required: false
 jobs:
-  terraform:
+  env-veriables-test:
     runs-on: ubuntu-latest
     environment: test
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+      - name: Print Name
+        run: echo "Hello $NAME"
