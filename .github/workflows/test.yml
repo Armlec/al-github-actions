@@ -1,0 +1,19 @@
+name: test-deploy
+on:
+  push:
+    branches:
+      - main
+    
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: string
+        default: dev
+        required: false
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+    environment: test
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
