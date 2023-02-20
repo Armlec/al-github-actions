@@ -22,3 +22,5 @@ jobs:
         uses: actions/checkout@v3
       - name: Print Name
         run: echo "Hello $NAME"
+      - name: Print Secret
+        run: echo "The secret is as follows ${{secrets.TEST_SECRET}}"
