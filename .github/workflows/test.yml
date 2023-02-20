@@ -1,6 +1,6 @@
 name: test-deploy
 env:
-  NAME: 'name-demo'
+  TF_VAR_ENV_BUCKET_NAME: ${{ secrets.TF_VAR_ENV_BUCKET_NAME }}
 
 on:
   push:
@@ -13,7 +13,7 @@ on:
         type: string
         default: dev
         required: false
-        
+
 jobs:
   env-veriables-test:
     runs-on: ubuntu-latest
@@ -33,6 +33,11 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
+
+      - name: Print Secret
+        run: echo ${{ secrets.TF_VAR_ENV_BUCKET_NAME }}
+
+
 
       - name: Terraform Format
         id: fmt
