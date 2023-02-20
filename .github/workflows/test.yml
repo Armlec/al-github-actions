@@ -1,6 +1,8 @@
 name: test-deploy
 env:
   TF_VAR_ENV_BUCKET_NAME: ${{ secrets.TF_VAR_ENV_BUCKET_NAME }}
+  TF_VAR_TOTESYS_DB_CREDENTIALS: ${{ TF_VAR_TOTESYS_DB_CREDENTIALS }}
+  
 
 on:
   push:
